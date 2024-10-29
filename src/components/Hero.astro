@@ -8,52 +8,50 @@ import InstagramIcon from "@/components/icons/InstagramIcon.astro";
 import SocialPill from "@/components/SocialPill.astro";
 ---
 
-<div class="">
-  <!--max-w-xl/-->
+<div class="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
   <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white mb-8 text-center mt-0"
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white mb-8 text-center"
   >
     Portfolio
   </h1>
-  <div class="flex gap-4 mb-4 items-center justify-start">
-    <!--flex gap-4 mb-4 items-center justify-start/-->
-    <!-- Cambio para ajustar alineación -->
-    <div class="text-content">
-      <!-- Envoltorio para el texto -->
-      <!--flex items-center transition md:justify-center md:hover:scale-105/-->
+
+  <div class="flex flex-col-reverse sm:flex-row items-center gap-6 mb-8">
+    <div class="text-content flex-1">
       <a
         href="https://www.linkedin.com/in/sebastián-salgado-polanco-79137b296/"
         target="_blank"
         rel="noopener"
-        class="flex items-center transition md:hover:scale-105 mb-8"
+        class="flex items-center transition md:hover:scale-105 mb-4"
         aria-label="Perfil de LinkedIn"
       >
-        <!-- <Badge>Disponible para trabajar</Badge>-->
+        <Badge>Disponible para trabajar</Badge>
       </a>
       <h2
-        class="text-xl font-bold tracking-tight text-gray-800 sm:text-3xl dark:text-white mb-8"
+        class="text-2xl font-bold text-gray-800 sm:text-3xl dark:text-white mb-4"
       >
-        Hola! Me llamo Sebastián Salgado &#128075
+        Hola! Me llamo Sebastián Salgado &#128075;
       </h2>
-      <p
-        class="text-xl text-gray-900 dark:[&>strong]:text-pink-200 [&>strong]:text-blue-500 [&>strong]:font-semibold dark:text-gray-300"
-      >
-        Estudiante de Ingenieria Civil en Informatica en la Universida Técnica
+      <p class="text-lg text-gray-900 dark:text-gray-300">
+        Estudiante de Ingeniería Civil en Informática en la Universidad Técnica
         Federico Santa María. Me gusta mucho todo lo relacionado a la
-        computacion, pero tengo una fuerta atraccion hacia el Desarrollo
+        computación, pero tengo una fuerte atracción hacia el Desarrollo
         Backend, Inteligencia Artificial y Ciberseguridad.
-        <strong>Actualmente disponible para trabajar!</strong>
+        <strong class="text-blue-500"
+          >Actualmente disponible para trabajar!</strong
+        >
       </p>
     </div>
-    <!-- Añadido margen automático a la izquierda -->
+
+    <!-- Imagen de perfil, responsiva -->
     <img
-      class="rounded-full ml-auto"
-      style="width: 400px; height: 300px;"
+      class="rounded-full w-48 h-48 sm:w-64 sm:h-64 object-cover"
       src="/profile.jpeg"
       alt={personalImageAlt}
     />
   </div>
-  <nav class="flex flex-wrap gap-4 mt-8 mb-50">
+
+  <!-- Navbar responsivo -->
+  <nav class="flex flex-wrap justify-center gap-4 mt-8 mb-12">
     <SocialPill href="mailto:miduga@gmail.com">
       <MailIcon class="size-5" />
       Contáctame
@@ -68,10 +66,41 @@ import SocialPill from "@/components/SocialPill.astro";
       <GitHubIcon class="size-5" />
       GitHub
     </SocialPill>
-
     <SocialPill href="https://www.instagram.com/seba_salgadouuu/">
       <InstagramIcon class="size-5" />
       Instagram
     </SocialPill>
   </nav>
 </div>
+
+<style is:global>
+  /* Ajustes para el layout */
+  :root {
+    color-scheme: light dark;
+  }
+
+  .text-content {
+    max-width: 600px;
+  }
+
+  /* Responsividad */
+  @media (max-width: 640px) {
+    .text-content {
+      text-align: center;
+    }
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Iconos en el navbar */
+  .size-5 {
+    width: 24px;
+    height: 24px;
+  }
+</style>

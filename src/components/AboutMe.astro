@@ -26,3 +26,64 @@ const personalImageAlt = "Sebastian Salgado";
     </a>
   </div>
 </article>
+
+<style>
+  .arrow-text {
+    position: absolute;
+    right: -340px; /* Ajustar según el diseño */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+    animation: pulse-arrow 2s infinite; /* Aplica la animación definida más abajo */
+  }
+  .arrow-text::before {
+    content: "";
+    position: absolute;
+    left: -40px; /* Ajustar basado en la longitud del texto */
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 20px 10px 0;
+    border-color: transparent #555 transparent transparent;
+    transform: translateY(-50%);
+  }
+
+  @keyframes moveArrow {
+    from {
+      transform: translate(0, -50%);
+    }
+    to {
+      transform: translate(10px, -50%);
+    }
+  }
+
+  @keyframes pulse-arrow {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) translateX(0);
+    }
+    50% {
+      transform: translate(-50%, -50%) translateX(10px);
+    }
+  }
+
+  /* Responsividad para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .arrow-text {
+      left: 90%;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .arrow-text {
+      left: 80%;
+      font-size: 0.75rem;
+    }
+  }
+</style>

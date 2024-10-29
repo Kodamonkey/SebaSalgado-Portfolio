@@ -8,8 +8,30 @@ import Home from "@/components/icons/Home.astro";
 <header
   class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
 >
+  <!-- Ícono de hamburguesa, visible solo en pantallas pequeñas -->
+  <button
+    class="block md:hidden p-2 ml-auto"
+    id="hamburgerButton"
+    aria-label="Toggle menu"
+  >
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+  </button>
+
   <nav
-    class="flex px-3 font-medium rounded-full text-gray-900 dark:text-gray-800 justify-center items-center space-x-4"
+    id="navLinks"
+    class="hidden md:flex px-3 font-medium rounded-full text-gray-900 dark:text-gray-800 justify-center items-center space-x-4"
   >
     <a
       class="nav-link relative flex items-center justify-center px-5 py-3 transition hover:text-blue-600 dark:hover:text-blue-800"
@@ -47,51 +69,82 @@ import Home from "@/components/icons/Home.astro";
       Sobre mí
     </a>
   </nav>
+
+  <!-- Menú dropdown para pantallas pequeñas -->
+  <nav
+    class="absolute top-0 right-0 mt-12 mr-4 hidden bg-white dark:bg-gray-800 shadow-lg md:hidden rounded-lg transition-transform transform duration-300 p-4 w-3/4 max-w-xs z-20"
+    id="dropdownMenu"
+  >
+    <a
+      href="/#inicio"
+      class="block px-5 py-3 text-gray-900 dark:text-gray-300"
+      onclick="window.closeDropdown()">Inicio</a
+    >
+    <a
+      href="/#experiencia"
+      class="block px-5 py-3 text-gray-900 dark:text-gray-300"
+      onclick="window.closeDropdown()">Experiencia</a
+    >
+    <a
+      href="/#proyectos"
+      class="block px-5 py-3 text-gray-900 dark:text-gray-300"
+      onclick="window.closeDropdown()">Proyectos</a
+    >
+    <a
+      href="/#sobre-mi"
+      class="block px-5 py-3 text-gray-900 dark:text-gray-300"
+      onclick="window.closeDropdown()">Sobre mí</a
+    >
+  </nav>
 </header>
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll("header nav a");
+    const hamburgerButton = document.getElementById("hamburgerButton");
+    const dropdownMenu = document.getElementById("dropdownMenu");
 
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") === entry.target.id) {
-              item.classList.add("text-blue-500");
-            } else {
-              item.classList.remove("text-blue-500");
-            }
-          });
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(callback, {
-      root: null, // Puedes ajustar esto si quieres limitar el área de observación a un contenedor específico.
-      rootMargin: "0px 0px -50% 0px", // Esto aumentará el área de intersección, haciendo más probable que la sección se marque como intersectada.
-      threshold: 0.1, // Un umbral más bajo significa que se disparará más rápidamente, incluso si solo una pequeña parte de la sección está visible.
-    });
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
-    // Cleanup function
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect();
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section);
-        });
+    // Define la función `closeDropdown` en el ámbito de la ventana
+    (window as any).closeDropdown = () => {
+      if (dropdownMenu) {
+        dropdownMenu.classList.add("hidden");
       }
     };
+
+    const toggleDropdown = (event: Event) => {
+      dropdownMenu?.classList.toggle("hidden");
+      event.stopPropagation();
+    };
+
+    if (hamburgerButton && dropdownMenu) {
+      hamburgerButton.addEventListener("click", toggleDropdown);
+
+      // Cierra el menú cuando se hace clic fuera de él
+      document.addEventListener("click", (e: MouseEvent) => {
+        const target = e.target as Node; // Confirma que e.target es de tipo `Node`
+        if (
+          !dropdownMenu.classList.contains("hidden") &&
+          target !== dropdownMenu &&
+          target !== hamburgerButton &&
+          !dropdownMenu.contains(target)
+        ) {
+          (window as any).closeDropdown();
+        }
+      });
+    }
   });
 </script>
-
 <style>
+  /* Estilos adicionales específicos para el dropdown en pantallas pequeñas */
+  #dropdownMenu {
+    right: 0;
+    animation: fadeIn 0.3s ease;
+  }
+  /* Estilos para el dropdown */
+  @media (max-width: 425px) {
+    #navLinks {
+      display: none;
+    }
+  }
   nav {
     animation: nav-shadown 1s linear both;
     animation-timeline: scroll();
@@ -102,12 +155,14 @@ import Home from "@/components/icons/Home.astro";
     @apply dark:bg-gray-800/90 bg-white/50;
   }
 
-  @keyframes nav-shadown {
-    0% {
-      @apply dark:bg-gray-800/0 bg-white/0;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(10px);
     }
     to {
-      @apply shadow-lg ring-1 backdrop-blur ring-white/10;
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 </style>
