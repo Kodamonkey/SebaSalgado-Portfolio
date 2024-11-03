@@ -1,0 +1,62 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import GitHubIcon from "@/components/icons/GitHub.astro";
+//import TwitterIcon from "@/components/icons/TwitterIcon.astro";
+//import PostCard from "@/components/PostCard.astro"; // Este componente sería para cada post individual
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <title>Blog de Computer Scientist</title>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+    <Header />
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+      <!-- Introducción del autor -->
+      <section class="text-center mb-16">
+        <h1 class="text-5xl font-bold text-gray-800 dark:text-gray-100">
+          Blog de Ciencia de la Computación
+        </h1>
+        <p class="text-lg mt-4">
+          Bienvenido al blog de un apasionado de la Ciencia de la Computación.
+          Aquí encontrarás artículos sobre inteligencia artificial, algoritmos,
+          programación y mucho más.
+        </p>
+        <!-- Imagen de perfil -->
+        <div class="flex justify-center mt-6">
+          <img
+            src="/profile.jpg"
+            alt="Foto de Computer Scientist"
+            class="w-32 h-32 rounded-full object-cover ring-4 ring-gray-300 dark:ring-gray-700"
+          />
+        </div>
+        <div class="flex justify-center gap-4 mt-4">
+          <SocialPill href="https://linkedin.com/in/example">
+            <LinkedInIcon class="size-5" />
+            LinkedIn
+          </SocialPill>
+          <SocialPill href="https://github.com/example">
+            <GitHubIcon class="size-5" />
+            GitHub
+          </SocialPill>
+        </div>
+      </section>
+
+      <!-- Listado de Posts -->
+      <section>
+        <h2
+          class="text-3xl font-semibold text-gray-700 dark:text-gray-200 mb-8"
+        >
+          Últimos Artículos
+        </h2>
+      </section>
+    </main></body
+  >
+</html>

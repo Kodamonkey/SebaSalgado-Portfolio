@@ -6,6 +6,10 @@ import PowerAutomate from "./icons/PowerAutomate.astro";
 import Excel from "./icons/Excel.astro";
 import Link from "./icons/Link.astro";
 import LinkButton from "./LinkButton.astro";
+import Python from "./icons/Python.astro";
+import React from "./icons/React.astro";
+import Django from "./icons/Django.astro";
+import { Debug } from "astro:components";
 
 const TAGS = {
   NEXT: {
@@ -28,6 +32,21 @@ const TAGS = {
     class: "bg-[#217346] text-black", // Color característico de Excel
     icon: Excel, // Asegúrate de tener este icono importado o definido
   },
+  PYTHON: {
+    name: "Python",
+    class: "bg-[#4B8BBE] text-white",
+    icon: Python,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#61DAFB] text-black",
+    icon: React,
+  },
+  DJANGO: {
+    name: "Django",
+    class: "bg-[#44B78B] text-black", // Verde claro y texto en verde oscuro
+    icon: Django,
+  },
 };
 const PROJECTS = [
   {
@@ -38,6 +57,16 @@ const PROJECTS = [
     github: "",
     image: "/projects/smartCanchas.webp",
     tags: [TAGS.EXCEL, TAGS.POWER_AUTOMATE],
+  },
+  {
+    title: "Digicore - Sistema que simula una red manejada con intenciones",
+    description:
+      "Sistema que permite simular una red gestionada por intenciones, utilizando texto en castellano como interfaz. Este sistema es capaz de procesar las intenciones del usuario, traducirlas en configuraciones de red específicas y aplicarlas en una red simulada.",
+    link: "",
+    github:
+      "https://github.com/INF225-2023-2-P201/02-digicore?tab=readme-ov-file",
+    image: "/projects/Digicore.png",
+    tags: [TAGS.PYTHON, TAGS.REACT, TAGS.DJANGO],
   },
   /*{
     title: "AdventJS - Retos de programación con JavaScript y TypeScript",
