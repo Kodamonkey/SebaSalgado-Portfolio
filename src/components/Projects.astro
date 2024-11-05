@@ -24,13 +24,13 @@ const TAGS = {
   },
   POWER_AUTOMATE: {
     name: "Power Automate",
-    class: "bg-[#0078D4] text-white", // Color de la marca de Microsoft Power Automate
-    icon: PowerAutomate, // Asegúrate de tener este icono importado o definido
+    class: "bg-[#0078D4] text-white",
+    icon: PowerAutomate,
   },
   EXCEL: {
     name: "Excel",
-    class: "bg-[#217346] text-black", // Color característico de Excel
-    icon: Excel, // Asegúrate de tener este icono importado o definido
+    class: "bg-[#217346] text-black",
+    icon: Excel,
   },
   PYTHON: {
     name: "Python",
@@ -44,24 +44,25 @@ const TAGS = {
   },
   DJANGO: {
     name: "Django",
-    class: "bg-[#44B78B] text-black", // Verde claro y texto en verde oscuro
+    class: "bg-[#44B78B] text-black",
     icon: Django,
   },
 };
+
 const PROJECTS = [
   {
-    title: "Smart Canchas USM - Sistema de agendamiento de canchas de la UTFSM",
+    title: "Smart Canchas USM - Sistema de agendamiento de canchas",
     description:
-      "Proyecto centrado en optimizar el sistema de agendamiento de canchas deportivas (fútbol y tenis) en la Universidad Técnica Federico Santa María. Actualmente implementado como sistema oficial.",
+      "Sistema oficial para la Universidad Técnica Federico Santa María, diseñado para optimizar la reserva de canchas de fútbol y tenis. Aumenta la eficiencia y facilita la gestión de reservas para los usuarios.",
     link: "",
     github: "",
     image: "/projects/smartCanchas.webp",
     tags: [TAGS.EXCEL, TAGS.POWER_AUTOMATE],
   },
   {
-    title: "Digicore - Sistema que simula una red manejada con intenciones",
+    title: "Digicore - Sistema de red gestionado por intenciones",
     description:
-      "Sistema que permite simular una red gestionada por intenciones, utilizando texto en castellano como interfaz. Este sistema es capaz de procesar las intenciones del usuario, traducirlas en configuraciones de red específicas y aplicarlas en una red simulada.",
+      "Aplicación que simula una red basada en intenciones utilizando comandos en español. Convierte las instrucciones del usuario en configuraciones específicas de red aplicadas en una simulación.",
     link: "https://usmcl-my.sharepoint.com/personal/florencia_ramirez_usm_cl/_layouts/15/stream.aspx?id=%2Fpersonal%2Fflorencia_ramirez_usm_cl%2FDocuments%2FUniversidad%2FSemestre%2008%2FIngeniería%20de%20Software%2FHito%206%20y%207%2FVideo_presentacion_ISW%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E03ad7d9c-3bde-4c53-8dfd-4c5754e4ba7a",
     github:
       "https://github.com/INF225-2023-2-P201/02-digicore?tab=readme-ov-file",
@@ -69,23 +70,14 @@ const PROJECTS = [
     tags: [TAGS.PYTHON, TAGS.REACT, TAGS.DJANGO],
   },
   {
-    title:
-      "Tracker Universitario - Interfaz para eventos universitarios y personalizados",
+    title: "Tracker Universitario - Sistema de gestión de eventos",
     description:
-      "Tracker de eventos en la universidad: Proyecto con solo interfaz que representa un sistema que gestione eventos universitarios y personalizados y que sea en un futuro integrado con la pagina web de la universidad.",
+      "Interfaz para la gestión de eventos universitarios y personalizados, diseñada para integrarse en el futuro con la página web de la universidad.",
     link: "https://tracker-universitario.vercel.app",
     github: "https://github.com/Kodamonkey/tracker-universitario",
     image: "/projects/Tracker.png",
     tags: [TAGS.REACT],
   },
-  /*{
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
-    description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
-  },*/
 ];
 ---
 
@@ -128,13 +120,13 @@ const PROJECTS = [
               {github && (
                 <LinkButton href={github}>
                   <GitHub class="size-6" />
-                  Code
+                  Código
                 </LinkButton>
               )}
               {link && (
                 <LinkButton href={link}>
                   <Link class="size-4" />
-                  Preview
+                  Vista previa
                 </LinkButton>
               )}
             </footer>
