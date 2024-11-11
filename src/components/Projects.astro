@@ -10,6 +10,7 @@ import Python from "./icons/Python.astro";
 import React from "./icons/React.astro";
 import Django from "./icons/Django.astro";
 import { Debug } from "astro:components";
+import Gns3 from "./icons/gns3.astro";
 
 const TAGS = {
   NEXT: {
@@ -47,6 +48,11 @@ const TAGS = {
     class: "bg-[#44B78B] text-black",
     icon: Django,
   },
+  GNS3: {
+    name: "GNS3",
+    class: "bg-[#2D3E50] text-white",
+    icon: Gns3,
+  },
 };
 
 const PROJECTS = [
@@ -67,7 +73,7 @@ const PROJECTS = [
     github:
       "https://github.com/INF225-2023-2-P201/02-digicore?tab=readme-ov-file",
     image: "/projects/Digicore.png",
-    tags: [TAGS.PYTHON, TAGS.REACT, TAGS.DJANGO],
+    tags: [TAGS.PYTHON, TAGS.REACT, TAGS.DJANGO, TAGS.GNS3],
   },
   {
     title: "Tracker Universitario - Sistema de gestión de eventos",
