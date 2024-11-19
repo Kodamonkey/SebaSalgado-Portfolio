@@ -10,6 +10,7 @@ import Projects from "@/components/Projects.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
 import Hero from "@/components/Hero.astro";
 import TitleSection from "@/components/TitleSection.astro";
+import LP from "@/components/LP.astro";
 ---
 
 <Layout
@@ -36,6 +37,14 @@ import TitleSection from "@/components/TitleSection.astro";
         Proyectos
       </TitleSection>
       <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="tecnologias">
+      <TitleSection>
+        <CodeIcon class="size-5" />
+        Tecnologías
+      </TitleSection>
+      <LP />
     </SectionContainer>
 
     <SectionContainer id="sobre-mi">

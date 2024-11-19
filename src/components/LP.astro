@@ -1,0 +1,142 @@
+---
+import Python from "@/components/icons-tec/Python.astro";
+import React from "@/components/icons-tec/React.astro";
+import Django from "@/components/icons-tec/Django.astro";
+import Tailwind from "@/components/icons-tec/Tailwind.astro";
+import Docker from "@/components/icons-tec/Docker.astro";
+import astro from "@/components/icons-tec/Astro.astro";
+import NextJS from "@/components/icons-tec/NextJS.astro";
+import NodeJS from "@/components/icons-tec/NodeJS.astro";
+import Javascript from "@/components/icons-tec/Javascript.astro";
+import Go from "@/components/icons-tec/Golang.astro";
+import Postgresql from "@/components/icons-tec/Postgresql.astro";
+import Mongodb from "@/components/icons-tec/Mongodb.astro";
+import Aws from "@/components/icons-tec/AWS.astro";
+import Java from "@/components/icons-tec/Java.astro";
+//import HalfStar from "@/components/icons-tec/HalfStar.astro";
+//import FullStar from "@/components/icons-tec/FullStar.astro";
+
+const masteredTechnologies = [
+  {
+    name: "Python",
+    class: "bg-[#f5f5f5] text-black", // Clase personalizada
+    icon: Python,
+  },
+  {
+    name: "Javascript",
+    class: "bg-[#f5f5f5] text-black", // Clase personalizada
+    icon: Javascript,
+  },
+  {
+    name: "NodeJS",
+    class: "bg-[#f5f5f5] text-black", // Clase personalizada
+    icon: NodeJS,
+  },
+  {
+    name: "React",
+    class: "bg-[#f5f5f5] text-black",
+    icon: React,
+  },
+  {
+    name: "Go",
+    class: "bg-[#f5f5f5] text-black", // Clase personalizada
+    icon: Go,
+  },
+  {
+    name: "Java",
+    class: "bg-[#f5f5f5] text-black", // Clase personalizada
+    icon: Java,
+  },
+  {
+    name: "Tailwind CSS",
+    class: "bg-[#f5f5f5] text-black",
+    icon: Tailwind,
+  },
+  {
+    name: "Postgresql",
+    class: "bg-[#f5f5f5] text-black",
+    icon: Postgresql,
+  },
+  {
+    name: "Mongodb",
+    class: "bg-[#f5f5f5] text-black",
+    icon: Mongodb,
+  },
+  {
+    name: "Docker",
+    class: "bg-[#f5f5f5] text-black",
+    icon: Docker,
+  },
+];
+
+const learningTechnologies = [
+  {
+    name: "Amazon Web Services",
+    class: "bg-[#f5f5f5] text-black",
+    icon: Aws,
+  },
+  {
+    name: "Astro",
+    class: "bg-[#f5f5f5] text-black",
+    icon: astro,
+  },
+  {
+    name: "Next.js",
+    class: "bg-[#f5f5f5] text-black",
+    icon: NextJS,
+  },
+  {
+    name: "Django",
+    class: "bg-[#f5f5f5] text-black",
+    icon: Django,
+  },
+];
+---
+
+<div class="space-y-16">
+  <!-- Tecnologías que manejo -->
+  <div>
+    <h3 class="text-2xl text-gray-800 mb-4 text-center">
+      Lo que he trabajado...
+    </h3>
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-center"
+    >
+      {
+        masteredTechnologies.map((tech) => (
+          <div
+            class={`flex flex-col items-center space-y-2 p-4 rounded-lg shadow-md ${tech.class}`}
+          >
+            <div class="icon-container">
+              <tech.icon class="icon" />
+            </div>
+            <span class="text-lg font-semibold">{tech.name}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Tecnologías que estoy aprendiendo -->
+  <div>
+    <h3 class="text-2xl text-gray-800 dark:text-white mb-4 text-center">
+      Tecnologías que estoy aprendiendo...
+    </h3>
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-center"
+    >
+      {
+        learningTechnologies.map((tech) => (
+          <div
+            class={`flex flex-col items-center space-y-2 p-4 rounded-lg shadow-md ${tech.class}`}
+          >
+            <div class="icon-container">
+              <tech.icon class="icon" />
+            </div>
+            <span class="text-lg font-semibold">{tech.name}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
