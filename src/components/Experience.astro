@@ -1,5 +1,20 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+import Python from "@/components/icons-tec/Python.astro";
+import React from "@/components/icons-tec/React.astro";
+import NodeJS from "@/components/icons-tec/NodeJS.astro";
+import Postgresql from "@/components/icons-tec/Postgresql.astro";
+import Docker from "@/components/icons-tec/Docker.astro";
+import Tailwind from "@/components/icons-tec/Tailwind.astro";
+import AzureDevops from "@/components/icons-tec/AzureDevops.astro";
+import GitHub from "@/components/icons-tec/Github.astro";
+import PowerAutomate from "@/components/icons-tec/PowerAutomate.astro";
+import PowerApps from "@/components/icons-tec/PowerApps.astro";
+import GithubActions from "./icons-tec/GithubActions.astro";
+import CICD from "./icons-tec/CICD.astro";
+import Git from "./icons-tec/Git.astro";
+import Express from "./icons-tec/Express.astro";
+
 const EXPERIENCE = [
   {
     date: "Actualmente...",
@@ -13,6 +28,17 @@ const EXPERIENCE = [
       con GitHub Actions para automatizar pruebas, despliegues, gestión 
       de migraciones y manejo de secretos, además de una implementación 
       inicial en AWS.`,
+    technologies: [
+      { name: "NodeJS", icon: NodeJS },
+      { name: "React", icon: React },
+      { name: "Express.js", icon: Express },
+      { name: "Postgresql", icon: Postgresql },
+      { name: "GitHub", icon: GitHub },
+      { name: "Git", icon: Git },
+      { name: "GitHub Actions", icon: GithubActions },
+      { name: "CI CD", icon: CICD },
+      { name: "Docker", icon: Docker },
+    ],
     link: "",
   },
   {
@@ -25,6 +51,14 @@ const EXPERIENCE = [
       realizar integración continua y despliegue continuo (CI/CD), 
       automatizando el proceso de desarrollo de software y de aplicaciones 
       NoCode en Power Apps.`,
+    technologies: [
+      { name: "Azure DevOps", icon: AzureDevops },
+      { name: "Power Automate", icon: PowerAutomate },
+      { name: "Power Apps", icon: PowerApps },
+      { name: "GitHub Enterprise", icon: GitHub },
+      { name: "GitHub Actions", icon: GithubActions },
+      { name: "CI CD", icon: CICD },
+    ],
   },
 ];
 ---
@@ -32,7 +66,7 @@ const EXPERIENCE = [
 <ol class="relative mt-16">
   {
     EXPERIENCE.map((experience) => (
-      <li class="">
+      <li class="mb-12">
         <ExperienceItem {...experience} />
       </li>
     ))

@@ -11,6 +11,7 @@ import React from "./icons/React.astro";
 import Django from "./icons/Django.astro";
 import { Debug } from "astro:components";
 import Gns3 from "./icons/gns3.astro";
+import Figma from "./icons/Figma.astro";
 
 const TAGS = {
   NEXT: {
@@ -25,33 +26,38 @@ const TAGS = {
   },
   POWER_AUTOMATE: {
     name: "Power Automate",
-    class: "bg-[#0078D4] text-white",
+    class: "bg-[#eedcd8] text-black font-bold",
     icon: PowerAutomate,
   },
   EXCEL: {
     name: "Excel",
-    class: "bg-[#217346] text-white",
+    class: "bg-[#eedcd8] text-black font-bold",
     icon: Excel,
   },
   PYTHON: {
     name: "Python",
-    class: "bg-[#4B8BBE] text-white",
+    class: "bg-[#eedcd8] text-black font-bold",
     icon: Python,
   },
   REACT: {
     name: "React",
-    class: "bg-[#61DAFB] text-white",
+    class: "bg-[#eedcd8] text-black font-bold",
     icon: React,
   },
   DJANGO: {
     name: "Django",
-    class: "bg-[#44B78B] text-white",
+    class: "bg-[#eedcd8] text-black font-bold",
     icon: Django,
   },
   GNS3: {
     name: "GNS3",
-    class: "bg-[#2D3E50] text-white",
+    class: "bg-[#eedcd8] text-black font-bold",
     icon: Gns3,
+  },
+  FIGMA: {
+    name: "Figma",
+    class: "bg-[#eedcd8] text-black font-bold",
+    icon: Figma,
   },
 };
 
@@ -82,7 +88,7 @@ const PROJECTS = [
     link: "https://tracker-universitario.vercel.app",
     github: "https://github.com/Kodamonkey/tracker-universitario",
     image: "/projects/Tracker.png",
-    tags: [TAGS.REACT],
+    tags: [TAGS.REACT, TAGS.FIGMA],
   },
 ];
 ---
