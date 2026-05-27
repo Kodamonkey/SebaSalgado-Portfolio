@@ -2,58 +2,72 @@
 import Layout from "@/layouts/Layout.astro";
 
 import AboutMe from "@/components/AboutMe.astro";
-import Briefcase from "@/components/icons/Briefcase.astro";
-import CodeIcon from "@/components/icons/Code.astro";
-import Project from "@/components/icons/Project.astro";
+import Contact from "@/components/Contact.astro";
+import Education from "@/components/Education.astro";
 import Experience from "@/components/Experience.astro";
-import ProfileCheck from "@/components/icons/ProfileCheck.astro";
+import Hero from "@/components/Hero.astro";
+import SectionIcon from "@/components/icons/SectionIcon.astro";
 import Projects from "@/components/Projects.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
-import Hero from "@/components/Hero.astro";
 import TitleSection from "@/components/TitleSection.astro";
 import LP from "@/components/LP.astro";
+import { profile } from "@/data/profile";
 ---
 
-<Layout
-  title="Porfolio de Sebastián Salgado - Desarrollador y Programador Web Junior"
-  description="Portfolio de Sebastian Salgadop Polanco, futuro Ing. Civil en Informatica"
->
+<Layout title={profile.seo.title} description={profile.seo.description}>
   <main class="px-4">
-    <SectionContainer id="inicio" class="py-16 md:py-36">
+    <SectionContainer id="home" class="pb-24 pt-32 md:pb-36 md:pt-44">
       <Hero />
     </SectionContainer>
+
+    <div class="space-y-32">
+      <SectionContainer id="about">
+        <TitleSection>
+          <SectionIcon name="about" class="size-10" />
+          About
+        </TitleSection>
+        <AboutMe />
+      </SectionContainer>
+
+      <SectionContainer id="projects">
+        <TitleSection>
+          <SectionIcon name="projects" class="size-10" />
+          Featured Projects
+        </TitleSection>
+        <Projects />
+      </SectionContainer>
+
+      <SectionContainer id="experience">
+        <TitleSection>
+          <SectionIcon name="experience" class="size-10" />
+          Professional Experience
+        </TitleSection>
+        <Experience />
+      </SectionContainer>
+
+      <SectionContainer id="skills">
+        <TitleSection>
+          <SectionIcon name="skills" class="size-10" />
+          Technical Skills
+        </TitleSection>
+        <LP />
+      </SectionContainer>
+
+      <SectionContainer id="education">
+        <TitleSection>
+          <SectionIcon name="education" class="size-10" />
+          Education
+        </TitleSection>
+        <Education />
+      </SectionContainer>
+
+      <SectionContainer id="contact">
+        <TitleSection>
+          <SectionIcon name="contact" class="size-10" />
+          Contact
+        </TitleSection>
+        <Contact />
+      </SectionContainer>
+    </div>
   </main>
-  <div class="space-y-24">
-    <SectionContainer id="experiencia">
-      <TitleSection>
-        <Briefcase class="size-8" />
-        Experiencia laboral
-      </TitleSection>
-      <Experience />
-    </SectionContainer>
-
-    <SectionContainer id="proyectos">
-      <TitleSection>
-        <Project class="size-8" />
-        Proyectos
-      </TitleSection>
-      <Projects />
-    </SectionContainer>
-
-    <SectionContainer id="tecnologias">
-      <TitleSection>
-        <CodeIcon class="size-5" />
-        Tecnologías
-      </TitleSection>
-      <LP />
-    </SectionContainer>
-
-    <SectionContainer id="sobre-mi">
-      <TitleSection>
-        <ProfileCheck class="size-8" />
-        Sobre mí
-      </TitleSection>
-      <AboutMe />
-    </SectionContainer>
-  </div>
 </Layout>

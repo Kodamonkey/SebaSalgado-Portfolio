@@ -1,0 +1,32 @@
+---
+import GitHubIcon from "@/components/icons/GitHub.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import MailIcon from "@/components/icons/Mail.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import { profile } from "@/data/profile";
+---
+
+<section
+  class="rounded-lg border border-black/10 bg-white/70 p-6 shadow-sm dark:border-white/10 dark:bg-gray-900/70"
+  aria-label="Contact options"
+>
+  <p class="max-w-2xl text-lg leading-8 text-gray-700 dark:text-gray-300">
+    I am most interested in research-adjacent engineering, scientific software,
+    AI for Science, observatory computing, deep-tech, and production AI systems.
+  </p>
+
+  <div class="mt-6 flex flex-wrap gap-3">
+    <SocialPill href={profile.links.github} aria-label="View GitHub profile">
+      <GitHubIcon class="size-5" />
+      View GitHub
+    </SocialPill>
+    <SocialPill href={profile.links.linkedin} aria-label="Connect on LinkedIn">
+      <LinkedInIcon class="size-5" />
+      Connect on LinkedIn
+    </SocialPill>
+    <SocialPill href={profile.links.email} aria-label="Send an email">
+      <MailIcon class="size-5" />
+      Contact
+    </SocialPill>
+  </div>
+</section>

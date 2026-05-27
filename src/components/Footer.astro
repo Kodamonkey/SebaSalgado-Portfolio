@@ -1,30 +1,30 @@
 ---
+import { profile } from "@/data/profile";
+
 const currentYear = new Date().getFullYear();
 ---
 
 <footer
-  class="opacity-80 m-4 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
+  class="container mx-auto mb-10 mt-16 flex w-full justify-center opacity-80 md:max-w-2xl md:pl-0 lg:max-w-4xl"
 >
   <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4"
+    class="mx-auto w-full max-w-screen-xl rounded-lg py-4 md:flex md:items-center md:justify-between"
   >
-    <span class="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90">
-      <a href="/" class="hover:underline">Por Sebastian Salgado</a>.
-      <p>Agredecimientos a Midudev.</p>
-      Realizado en {currentYear}
+    <span class="text-sm text-zinc-800/90 dark:text-zinc-200/90 sm:text-center">
+      <a href="/#home" class="hover:underline">{profile.displayName}</a>.
+      Built with Astro and Tailwind CSS. {currentYear}
     </span>
     <ul
-      class="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
+      class="mt-3 flex flex-wrap items-center text-sm font-medium dark:text-white/90 sm:mt-0"
     >
       <li>
-        <a href="/#sobre-mi" class="hover:underline me-4 md:me-6">Sobre mí</a>
+        <a href="/#projects" class="me-4 hover:underline md:me-6">Projects</a>
       </li>
       <li>
-        <a
-          id="contacto"
-          href="mailto:sebastian.salgadop@usm.cl"
-          class="hover:underline">Contacto</a
-        >
+        <a href="/#about" class="me-4 hover:underline md:me-6">About</a>
+      </li>
+      <li>
+        <a id="contacto" href="/#contact" class="hover:underline">Contact</a>
       </li>
     </ul>
   </div>

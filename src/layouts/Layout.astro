@@ -1,41 +1,56 @@
 ---
-//import "@fontsource/fira-code";
 import "@fontsource-variable/onest";
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
+import { profile } from "@/data/profile";
 
 interface Props {
   title: string;
   description: string;
+  image?: string;
 }
 
-const { description, title } = Astro.props;
+const { description, title, image = profile.seo.image } = Astro.props;
+const site = Astro.site ?? new URL(profile.seo.url);
+const canonicalUrl = new URL(Astro.url.pathname, site);
+const imageUrl = new URL(image, site);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/s.png" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/s.png" />
     <link rel="stylesheet" href="/assets/styles.css" />
     <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
     <title>{title}</title>
     <ViewTransitions />
   </head>
 
-  <body class="relative text-black dark:text-white overflow-x-hidden">
+  <body class="relative overflow-x-hidden text-black dark:text-white">
     <div
-      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-800 dark:bg-gray-950
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,255,255,0.9),rgba(255,255,255,0.9))]
-      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+      class="absolute bottom-0 top-0 z-[-2] min-h-screen w-full bg-gray-800 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,255,255,0.9),rgba(255,255,255,0.9))] dark:bg-gray-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
     >
     </div>
     <Header />
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 flex-grow max-w-full">
+    <main class="container mx-auto max-w-full flex-grow px-4 sm:px-6 lg:px-8">
       <slot />
     </main>
     <Footer />
@@ -45,7 +60,7 @@ const { description, title } = Astro.props;
       }
 
       html {
-        font-family: "Fira Code", system-ui;
+        font-family: "Onest Variable", system-ui, sans-serif;
         scroll-behavior: smooth;
       }
 
@@ -55,19 +70,15 @@ const { description, title } = Astro.props;
         flex-direction: column;
         min-height: 100vh;
         overscroll-behavior: none;
-        overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+        overflow-x: hidden;
       }
 
-      /* Ajuste para el contenedor principal */
       .container {
         max-width: 1200px;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        width: 100%; /* Asegura que ocupe el 100% del ancho */
-        overflow-x: hidden; /* Prevenir desbordamiento horizontal */
+        width: 100%;
+        overflow-x: hidden;
       }
 
-      /* Ajustes para imágenes */
       img,
       .container img,
       .profile-image-container img {
@@ -76,47 +87,15 @@ const { description, title } = Astro.props;
         display: block;
       }
 
-      /* Media query para pantallas pequeñas */
       @media (max-width: 768px) {
         .container {
           max-width: 100%;
-          padding-top: 1rem;
-          padding-bottom: 1rem;
-        }
-
-        /* Ajuste de texto y elementos grandes en pantallas pequeñas */
-        h1,
-        h2,
-        h3 {
-          font-size: 1.5rem;
-          text-align: center;
         }
 
         #header-nav,
         .profile-image-container {
           padding: 0 1rem;
           max-width: 100%;
-        }
-      }
-
-      /* Header animación */
-      #header-nav {
-        animation: nav-shadown 1s linear both;
-        animation-timeline: scroll();
-        animation-range: 0 100px;
-      }
-
-      /* Animación de transición del header */
-      @keyframes nav-shadown {
-        0% {
-          backdrop-filter: blur(20px);
-          border-width: 0;
-        }
-        to {
-          box-shadow:
-            0px 5px 50px -5px rgba(0, 0, 0, 0.1),
-            0px 0px 0 1px rgba(0, 0, 0, 0.3);
-          border-radius: 9999px;
         }
       }
     </style>

@@ -1,89 +1,27 @@
 ---
-const personalImageAlt = "Sebastian Salgado";
+import { profile } from "@/data/profile";
 ---
 
-<article
-  class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row relative"
->
-  <!-- Contenedor para la imagen y la flecha con texto -->
-  <div class="flex items-center justify-center flex-col md:flex-row">
-    <a
-      href="https://www.linkedin.com/in/sebastián-salgado-polanco-79137b296/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="order-1 md:order-2 relative"
-      aria-label="Perfil de LinkedIn"
-    >
-      <img
-        width="200"
-        height="200"
-        src="/face2.jpg"
-        alt={personalImageAlt}
-        class="rounded-full object-cover w-64 h-full p-1 rotate-3 lg:p-2 lg:w-64 aspect-square bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20"
-        style="object-position: 50% 50%"
-      />
-      <div class="arrow-text">Presiona en mi cara!!</div>
-    </a>
+<article class="grid gap-10 text-gray-700 dark:text-gray-300 lg:grid-cols-[1.35fr_0.85fr]">
+  <div class="space-y-6 text-lg leading-8">
+    {profile.about.map((paragraph) => <p>{paragraph}</p>)}
   </div>
+
+  <aside
+    class="rounded-lg border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-gray-900/70"
+    aria-label="Technical focus areas"
+  >
+    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+      Core focus
+    </h3>
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {
+        profile.focusAreas.map((area) => (
+          <li class="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-900 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-100">
+            {area}
+          </li>
+        ))
+      }
+    </ul>
+  </aside>
 </article>
-
-<style>
-  .arrow-text {
-    position: absolute;
-    right: -340px; /* Ajustar según el diseño */
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #555;
-    font-weight: bold;
-    cursor: pointer;
-    white-space: nowrap;
-    animation: pulse-arrow 2s infinite; /* Aplica la animación definida más abajo */
-  }
-  .arrow-text::before {
-    content: "";
-    position: absolute;
-    left: -40px; /* Ajustar basado en la longitud del texto */
-    top: 50%;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 20px 10px 0;
-    border-color: transparent #555 transparent transparent;
-    transform: translateY(-50%);
-  }
-
-  @keyframes moveArrow {
-    from {
-      transform: translate(0, -50%);
-    }
-    to {
-      transform: translate(10px, -50%);
-    }
-  }
-
-  @keyframes pulse-arrow {
-    0%,
-    100% {
-      transform: translate(-50%, -50%) translateX(0);
-    }
-    50% {
-      transform: translate(-50%, -50%) translateX(10px);
-    }
-  }
-
-  /* Responsividad para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .arrow-text {
-      left: 90%;
-      font-size: 0.875rem;
-    }
-  }
-
-  @media (max-width: 425px) {
-    .arrow-text {
-      left: 80%;
-      font-size: 0.75rem;
-    }
-  }
-</style>

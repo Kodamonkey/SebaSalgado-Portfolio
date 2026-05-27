@@ -1,179 +1,152 @@
 ---
-import Python from "@/components/icons-tec/Python.astro";
-import React from "@/components/icons-tec/React.astro";
+import AWS from "@/components/icons-tec/AWS.astro";
+import AstroIcon from "@/components/icons-tec/Astro.astro";
+import AzureDevops from "@/components/icons-tec/AzureDevops.astro";
+import C from "@/components/icons-tec/C.astro";
+import CICD from "@/components/icons-tec/CICD.astro";
+import Cpp from "@/components/icons-tec/Cpp.astro";
+import CVAT from "@/components/icons-tec/Cvat.astro";
 import Django from "@/components/icons-tec/Django.astro";
-import Tailwind from "@/components/icons-tec/Tailwind.astro";
 import Docker from "@/components/icons-tec/Docker.astro";
-import astro from "@/components/icons-tec/Astro.astro";
+import Express from "@/components/icons-tec/Express.astro";
+import Figma from "@/components/icons-tec/Figma.astro";
+import Git from "@/components/icons-tec/Git.astro";
+import GitHub from "@/components/icons-tec/Github.astro";
+import GithubActions from "@/components/icons-tec/GithubActions.astro";
+import Go from "@/components/icons-tec/Golang.astro";
+import Java from "@/components/icons-tec/Java.astro";
+import JavaScript from "@/components/icons-tec/Javascript.astro";
+import Linux from "@/components/icons-tec/Linux.astro";
+import MongoDB from "@/components/icons-tec/Mongodb.astro";
 import NextJS from "@/components/icons-tec/NextJS.astro";
 import NodeJS from "@/components/icons-tec/NodeJS.astro";
-import Javascript from "@/components/icons-tec/Javascript.astro";
-import Go from "@/components/icons-tec/Golang.astro";
-import Postgresql from "@/components/icons-tec/Postgresql.astro";
-import Mongodb from "@/components/icons-tec/Mongodb.astro";
-import Aws from "@/components/icons-tec/AWS.astro";
-import Java from "@/components/icons-tec/Java.astro";
-import Github from "@/components/icons-tec/Github.astro";
-import Git from "@/components/icons-tec/Git.astro";
-import c from "@/components/icons-tec/C.astro";
-import cpp from "@/components/icons-tec/Cpp.astro";
-import AzureDevops from "@/components/icons-tec/AzureDevops.astro";
+import PostgreSQL from "@/components/icons-tec/Postgresql.astro";
+import PowerApps from "@/components/icons-tec/PowerApps.astro";
 import PowerAutomate from "@/components/icons-tec/PowerAutomate.astro";
+import Python from "@/components/icons-tec/Python.astro";
+import React from "@/components/icons-tec/React.astro";
+import Sequelize from "@/components/icons-tec/Sequelize.astro";
+import Tailwind from "@/components/icons-tec/Tailwind.astro";
+import Ubuntu from "@/components/icons-tec/Ubuntu.astro";
+import YOLO from "@/components/icons-tec/UltralyticsYOLO.astro";
+import Excel from "@/components/icons/Excel.astro";
+import GNS3 from "@/components/icons/gns3.astro";
+import { capabilityCategories, toolCategories } from "@/data/skills";
 
-//import HalfStar from "@/components/icons-tec/HalfStar.astro";
-//import FullStar from "@/components/icons-tec/FullStar.astro";
+const iconMap = {
+  apigateway: AWS,
+  astro: AstroIcon,
+  aws: AWS,
+  azuredevops: AzureDevops,
+  azurepipelines: AzureDevops,
+  bedrock: AWS,
+  c: C,
+  cicd: CICD,
+  cloudformation: AWS,
+  cpp: Cpp,
+  cvat: CVAT,
+  django: Django,
+  docker: Docker,
+  dynamodb: AWS,
+  excel: Excel,
+  express: Express,
+  figma: Figma,
+  git: Git,
+  github: GitHub,
+  githubactions: GithubActions,
+  gns3: GNS3,
+  go: Go,
+  java: Java,
+  javascript: JavaScript,
+  lambda: AWS,
+  linux: Linux,
+  mongodb: MongoDB,
+  nestjs: NodeJS,
+  next: NextJS,
+  node: NodeJS,
+  postgresql: PostgreSQL,
+  powerapps: PowerApps,
+  powerautomate: PowerAutomate,
+  powerplatform: PowerAutomate,
+  python: Python,
+  react: React,
+  s3: AWS,
+  sequelize: Sequelize,
+  sql: PostgreSQL,
+  stepfunctions: AWS,
+  tailwind: Tailwind,
+  ubuntu: Ubuntu,
+  yolo: YOLO,
+};
 
-const masteredTechnologies = [
-  {
-    name: "Python",
-    class: "bg-[#f5f5f5] text-black", // Clase personalizada
-    icon: Python,
-  },
-  {
-    name: "Javascript",
-    class: "bg-[#f5f5f5] text-black", // Clase personalizada
-    icon: Javascript,
-  },
-  {
-    name: "NodeJS",
-    class: "bg-[#f5f5f5] text-black", // Clase personalizada
-    icon: NodeJS,
-  },
-  {
-    name: "React",
-    class: "bg-[#f5f5f5] text-black",
-    icon: React,
-  },
-  {
-    name: "Go",
-    class: "bg-[#f5f5f5] text-black", // Clase personalizada
-    icon: Go,
-  },
-  {
-    name: "C",
-    class: "bg-[#f5f5f5] text-black", // Clase personalizada
-    icon: c,
-  },
-  {
-    name: "C++",
-    class: "bg-[#f5f5f5] text-black", // Clase personalizada
-    icon: cpp,
-  },
-  {
-    name: "Java",
-    class: "bg-[#f5f5f5] text-black", // Clase personalizada
-    icon: Java,
-  },
-  {
-    name: "Tailwind CSS",
-    class: "bg-[#f5f5f5] text-black",
-    icon: Tailwind,
-  },
-  {
-    name: "Postgresql",
-    class: "bg-[#f5f5f5] text-black",
-    icon: Postgresql,
-  },
-  {
-    name: "Mongodb",
-    class: "bg-[#f5f5f5] text-black",
-    icon: Mongodb,
-  },
-  {
-    name: "Docker",
-    class: "bg-[#f5f5f5] text-black",
-    icon: Docker,
-  },
-  {
-    name: "Git",
-    class: "bg-[#f5f5f5] text-black",
-    icon: Git,
-  },
-  {
-    name: "Github",
-    class: "bg-[#f5f5f5] text-black",
-    icon: Github,
-  },
-  {
-    name: "Azure DevOps",
-    class: "bg-[#f5f5f5] text-black",
-    icon: AzureDevops,
-  },
-  {
-    name: "Power Automate",
-    class: "bg-[#f5f5f5] text-black",
-    icon: PowerAutomate,
-  },
-];
-
-const learningTechnologies = [
-  {
-    name: "Amazon Web Services",
-    class: "bg-[#f5f5f5] text-black",
-    icon: Aws,
-  },
-  {
-    name: "Astro",
-    class: "bg-[#f5f5f5] text-black",
-    icon: astro,
-  },
-  {
-    name: "Next.js",
-    class: "bg-[#f5f5f5] text-black",
-    icon: NextJS,
-  },
-  {
-    name: "Django",
-    class: "bg-[#f5f5f5] text-black",
-    icon: Django,
-  },
-];
+const fallbackLabels = {
+  bigquery: "BQ",
+  fits: "FITS",
+  glpi: "GLPI",
+  mcp: "MCP",
+  presto: "PRE",
+  pytorch: "PT",
+  tensorflow: "TF",
+  typescript: "TS",
+};
 ---
 
-<div class="space-y-16">
-  <!-- Tecnologías que manejo -->
-  <div>
-    <h3 class="text-2xl text-gray-800 mb-4 text-center">
-      Lo que he trabajado...
-    </h3>
-    <div
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-center"
-    >
-      {
-        masteredTechnologies.map((tech) => (
-          <div
-            class={`flex flex-col items-center space-y-2 p-4 rounded-lg shadow-md ${tech.class}`}
-          >
-            <div class="icon-container">
-              <tech.icon class="icon" />
-            </div>
-            <span class="text-lg font-semibold">{tech.name}</span>
-          </div>
-        ))
-      }
-    </div>
+<div class="space-y-12">
+  <div class="grid gap-8">
+    {
+      toolCategories.map((category) => (
+        <section>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+            {category.title}
+          </h3>
+          <ul class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {category.items.map((item) => {
+              const Icon = iconMap[item.icon as keyof typeof iconMap];
+              return (
+                <li class="flex min-h-20 items-center gap-3 rounded-lg border border-black/10 bg-white/75 px-4 py-3 shadow-sm dark:border-white/10 dark:bg-gray-900/75">
+                  {item.iconUrl ? (
+                    <img
+                      src={item.iconUrl}
+                      alt={`${item.name} icon`}
+                      class="h-8 w-8 shrink-0 object-contain"
+                      loading="lazy"
+                    />
+                  ) : Icon ? (
+                    <Icon class="h-8 w-8 shrink-0" />
+                  ) : (
+                    <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-gray-900 px-1 text-xs font-bold text-white dark:bg-white dark:text-gray-900">
+                      {fallbackLabels[item.icon as keyof typeof fallbackLabels] ??
+                        item.name.slice(0, 2)}
+                    </span>
+                  )}
+                  <span class="text-sm font-semibold text-gray-800 dark:text-gray-100">
+                    {item.name}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))
+    }
   </div>
 
-  <!-- Tecnologías que estoy aprendiendo -->
-  <div>
-    <h3 class="text-2xl text-gray-800 dark:text-white mb-4 text-center">
-      Tecnologías que estoy aprendiendo...
-    </h3>
-    <div
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-center"
-    >
-      {
-        learningTechnologies.map((tech) => (
-          <div
-            class={`flex flex-col items-center space-y-2 p-4 rounded-lg shadow-md ${tech.class}`}
-          >
-            <div class="icon-container">
-              <tech.icon class="icon" />
-            </div>
-            <span class="text-lg font-semibold">{tech.name}</span>
-          </div>
-        ))
-      }
-    </div>
+  <div class="grid gap-5 md:grid-cols-3">
+    {
+      capabilityCategories.map((category) => (
+        <section class="rounded-lg border border-black/10 bg-white/70 p-5 shadow-sm dark:border-white/10 dark:bg-gray-900/70">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+            {category.title}
+          </h3>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {category.items.map((item) => (
+              <li class="rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
   </div>
 </div>

@@ -2,28 +2,35 @@
 import Badge from "@/components/Badge.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
 import SocialPill from "@/components/SocialPill.astro";
+import GitHubIcon from "@/components/icons/GitHub.astro";
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
-
 import Layout from "@/layouts/Layout.astro";
+import { profile } from "@/data/profile";
 ---
 
-<Layout title="porfolio" description="El catálogo de componentes del porfolio">
-  <SectionContainer class="py-44 pb-32 flex flex-col gap-y-10">
-    <article class="mb-10">
+<Layout
+  title={`Components | ${profile.displayName}`}
+  description="Internal component preview for the portfolio design system."
+>
+  <SectionContainer id="component-preview" class="flex flex-col gap-y-10 py-32">
+    <article>
       <h1 class="mb-4 text-xl font-semibold">&lt;Badge /&gt;</h1>
-
-      <Badge>Disponible para trabajar</Badge>
+      <Badge>{profile.status}</Badge>
     </article>
 
-    <article class="mb-10">
-      <h1 class="mb-4 text-xl font-semibold">&lt SocialPill /&gt;</h1>
-
-      <div class="flex">
+    <article>
+      <h1 class="mb-4 text-xl font-semibold">&lt;SocialPill /&gt;</h1>
+      <div class="flex flex-wrap gap-3">
+        <SocialPill href={profile.links.github} aria-label="View GitHub profile">
+          <GitHubIcon class="size-5" />
+          View GitHub
+        </SocialPill>
         <SocialPill
-          href="https://www.linkedin.com/in/sebastián-salgado-polanco-79137b296/"
+          href={profile.links.linkedin}
+          aria-label="Connect on LinkedIn"
         >
-          <LinkedInIcon class="size-4 md:size-6" />
-          LinkedIn
+          <LinkedInIcon class="size-5" />
+          Connect on LinkedIn
         </SocialPill>
       </div>
     </article>

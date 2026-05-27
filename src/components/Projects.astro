@@ -1,150 +1,86 @@
 ---
 import GitHub from "./icons/GitHub.astro";
-import NextJS from "./icons/NextJS.astro";
-import Tailwind from "./icons/Tailwind.astro";
-import PowerAutomate from "./icons/PowerAutomate.astro";
-import Excel from "./icons/Excel.astro";
 import Link from "./icons/Link.astro";
 import LinkButton from "./LinkButton.astro";
-import Python from "./icons/Python.astro";
-import React from "./icons/React.astro";
-import Django from "./icons/Django.astro";
-import { Debug } from "astro:components";
-import Gns3 from "./icons/gns3.astro";
-import Figma from "./icons/Figma.astro";
-
-const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
-  POWER_AUTOMATE: {
-    name: "Power Automate",
-    class: "bg-[#eedcd8] text-black font-bold",
-    icon: PowerAutomate,
-  },
-  EXCEL: {
-    name: "Excel",
-    class: "bg-[#eedcd8] text-black font-bold",
-    icon: Excel,
-  },
-  PYTHON: {
-    name: "Python",
-    class: "bg-[#eedcd8] text-black font-bold",
-    icon: Python,
-  },
-  REACT: {
-    name: "React",
-    class: "bg-[#eedcd8] text-black font-bold",
-    icon: React,
-  },
-  DJANGO: {
-    name: "Django",
-    class: "bg-[#eedcd8] text-black font-bold",
-    icon: Django,
-  },
-  GNS3: {
-    name: "GNS3",
-    class: "bg-[#eedcd8] text-black font-bold",
-    icon: Gns3,
-  },
-  FIGMA: {
-    name: "Figma",
-    class: "bg-[#eedcd8] text-black font-bold",
-    icon: Figma,
-  },
-};
-
-const PROJECTS = [
-  {
-    title: "Smart Canchas USM - Sistema de agendamiento de canchas",
-    description:
-      "Sistema oficial para la Universidad Técnica Federico Santa María, diseñado para optimizar la reserva de canchas de fútbol y tenis. Aumenta la eficiencia y facilita la gestión de reservas para los usuarios.",
-    link: "",
-    github: "",
-    image: "/projects/smartCanchas.webp",
-    tags: [TAGS.EXCEL, TAGS.POWER_AUTOMATE],
-  },
-  {
-    title: "Digicore - Sistema de red gestionado por intenciones",
-    description:
-      "Aplicación que simula una red basada en intenciones utilizando comandos en español. Convierte las instrucciones del usuario en configuraciones específicas de red aplicadas en una simulación.",
-    link: "https://usmcl-my.sharepoint.com/personal/florencia_ramirez_usm_cl/_layouts/15/stream.aspx?id=%2Fpersonal%2Fflorencia_ramirez_usm_cl%2FDocuments%2FUniversidad%2FSemestre%2008%2FIngeniería%20de%20Software%2FHito%206%20y%207%2FVideo_presentacion_ISW%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E03ad7d9c-3bde-4c53-8dfd-4c5754e4ba7a",
-    github:
-      "https://github.com/INF225-2023-2-P201/02-digicore?tab=readme-ov-file",
-    image: "/projects/Digicore.png",
-    tags: [TAGS.PYTHON, TAGS.REACT, TAGS.DJANGO, TAGS.GNS3],
-  },
-  {
-    title: "Tracker Universitario - Sistema de gestión de eventos",
-    description:
-      "Interfaz para la gestión de eventos universitarios y personalizados, diseñada para integrarse en el futuro con la página web de la universidad.",
-    link: "https://tracker-universitario.vercel.app",
-    github: "https://github.com/Kodamonkey/tracker-universitario",
-    image: "/projects/Tracker.png",
-    tags: [TAGS.REACT, TAGS.FIGMA],
-  },
-];
+import { projects } from "@/data/projects";
 ---
 
-<div class="flex flex-col gap-y-16">
+<div class="flex flex-col gap-y-24">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-        <div class="w-full md:w-1/2">
-          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-            <img
-              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-              loading="lazy"
-              src={image}
-            />
-          </div>
-        </div>
-
-        <div class="w-full md:w-1/2 md:max-w-lg">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-            {title}
-          </h3>
-          <div class="flex flex-wrap mt-2">
-            <ul class="flex flex-row mb-2 gap-x-2">
-              {tags.map((tag) => (
-                <li>
-                  <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-                  >
-                    <tag.icon class="size-4" />
-                    {tag.name}
+    projects.map(
+      ({
+        image,
+        imageAlt,
+        title,
+        type,
+        description,
+        technologies,
+        link,
+        github,
+        featured,
+      }) => (
+        <article class="group grid gap-8 md:grid-cols-2 md:items-start">
+          <div class="w-full">
+            <div class="relative flex min-h-56 flex-col justify-between gap-8 overflow-hidden rounded-lg border border-gray-200 bg-white/70 p-6 shadow-xl transition duration-500 ease-in-out dark:border-gray-800 dark:bg-gray-900/70 md:group-hover:-translate-y-1 md:group-hover:shadow-2xl">
+              {image ? (
+                <img
+                  class="h-56 w-full rounded-md object-cover object-top"
+                  loading="lazy"
+                  src={image}
+                  alt={imageAlt ?? `${title} project preview`}
+                />
+              ) : (
+                <div class="flex min-h-48 flex-col justify-between rounded-md bg-gray-950 p-6 text-white">
+                  <span class="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-200">
+                    {featured ? "Featured research system" : "Project"}
                   </span>
-                </li>
-              ))}
-            </ul>
-
-            <div class="mt-2 text-gray-700 dark:text-gray-400">
-              {description}
+                  <p class="mt-10 text-2xl font-bold leading-tight">{title}</p>
+                  <p class="mt-3 text-sm text-gray-300">{type}</p>
+                </div>
+              )}
             </div>
-            <footer class="flex items-end justify-start mt-4 gap-x-4">
-              {github && (
-                <LinkButton href={github}>
-                  <GitHub class="size-6" />
-                  Código
-                </LinkButton>
-              )}
-              {link && (
-                <LinkButton href={link}>
-                  <Link class="size-4" />
-                  Vista previa
-                </LinkButton>
-              )}
-            </footer>
           </div>
-        </div>
-      </article>
-    ))
+
+          <div class="w-full md:max-w-lg">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              {title}
+            </h3>
+            <p class="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300">
+              {type}
+            </p>
+            <div class="mt-4 flex flex-wrap">
+              <ul class="mb-3 flex flex-wrap gap-2">
+                {technologies.map((technology) => (
+                  <li>
+                    <span class="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                      {technology}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <p class="mt-2 text-gray-700 dark:text-gray-400">{description}</p>
+              <footer class="mt-4 flex items-end justify-start gap-x-4">
+                {github && (
+                  <LinkButton
+                    href={github}
+                    aria-label={`View ${title} on GitHub`}
+                  >
+                    <GitHub class="size-6" />
+                    GitHub
+                  </LinkButton>
+                )}
+                {link && (
+                  <LinkButton href={link} aria-label={`Open ${title} preview`}>
+                    <Link class="size-4" />
+                    Preview
+                  </LinkButton>
+                )}
+              </footer>
+            </div>
+          </div>
+        </article>
+      ),
+    )
   }
 </div>

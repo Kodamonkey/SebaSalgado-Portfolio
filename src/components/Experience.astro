@@ -1,87 +1,13 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
-import Python from "@/components/icons-tec/Python.astro";
-import React from "@/components/icons-tec/React.astro";
-import NodeJS from "@/components/icons-tec/NodeJS.astro";
-import Postgresql from "@/components/icons-tec/Postgresql.astro";
-import Docker from "@/components/icons-tec/Docker.astro";
-import Tailwind from "@/components/icons-tec/Tailwind.astro";
-import AzureDevops from "@/components/icons-tec/AzureDevops.astro";
-import GitHub from "@/components/icons-tec/Github.astro";
-import PowerAutomate from "@/components/icons-tec/PowerAutomate.astro";
-import PowerApps from "@/components/icons-tec/PowerApps.astro";
-import GithubActions from "./icons-tec/GithubActions.astro";
-import CICD from "./icons-tec/CICD.astro";
-import Git from "./icons-tec/Git.astro";
-import Express from "./icons-tec/Express.astro";
-import YOLO from "./icons-tec/UltralyticsYOLO.astro";
-import CVAT from "./icons-tec/Cvat.astro";
-
-const EXPERIENCE = [
-  {
-    date: "Diciembre 2024 - Actualidad",
-    title: "AI Engineer Trainee",
-    company: "TwinViz",
-    description: `En progreso...`,
-    technologies: [
-      { name: "Python", icon: Python },
-      { name: "YOLOv8", icon: YOLO },
-      { name: "", icon: CVAT },
-    ],
-    link: "",
-  },
-  {
-    date: "Agosto 2024 - Actualidad...",
-    title: "Desarrollador Junior Full Stack",
-    company: "TwinViz",
-    description: `Desarrollo de una aplicación completa con Node.js y Express en el backend, utilizando PostgreSQL 
-      y Sequelize para la gestión de bases de datos, y Auth0 para la 
-      autenticación de usuarios. En el frontend, empleo React y React 
-      Router para asegurar una navegación eficiente y un diseño responsivo 
-      basado en Figma. En cuanto a DevOps, establezco pipelines de CI/CD 
-      con GitHub Actions para automatizar pruebas, despliegues, gestión 
-      de migraciones y manejo de secretos, además de una implementación 
-      inicial en AWS.`,
-    technologies: [
-      { name: "NodeJS", icon: NodeJS },
-      { name: "React", icon: React },
-      { name: "Express.js", icon: Express },
-      { name: "Postgresql", icon: Postgresql },
-      { name: "GitHub", icon: GitHub },
-      { name: "Git", icon: Git },
-      { name: "GitHub Actions", icon: GithubActions },
-      { name: "CI CD", icon: CICD },
-      { name: "Docker", icon: Docker },
-    ],
-    link: "",
-  },
-  {
-    date: "Enero 2024 - Abril 2024",
-    title: "Práctica Industrial",
-    company: "Agrosuper",
-    description: `Apoyo en tareas técnicas de supervisión y configuración de plataformas para el desarrollo de software, específicamente en Microsoft 
-      Power Platform, Microsoft Azure y GitHub Enterprise Cloud. Desarrollo 
-      de GitHub Actions y Azure Pipelines a través de archivos YAML, para 
-      realizar integración continua y despliegue continuo (CI/CD), 
-      automatizando el proceso de desarrollo de software y de aplicaciones 
-      NoCode en Power Apps.`,
-    technologies: [
-      { name: "Azure DevOps", icon: AzureDevops },
-      { name: "Power Automate", icon: PowerAutomate },
-      { name: "Power Apps", icon: PowerApps },
-      { name: "GitHub Enterprise", icon: GitHub },
-      { name: "GitHub Actions", icon: GithubActions },
-      { name: "CI CD", icon: CICD },
-    ],
-  },
-];
+import { experience } from "@/data/experience";
 ---
 
 <ol class="relative mt-16">
   {
-    EXPERIENCE.map((experience) => (
+    experience.map((entry) => (
       <li class="mb-12">
-        <ExperienceItem {...experience} />
+        <ExperienceItem {...entry} />
       </li>
     ))
   }

@@ -1,26 +1,24 @@
 ---
-import Briefcase from "@/components/icons/Briefcase.astro";
-import CodeIcon from "@/components/icons/Code.astro";
-import ProfileCheck from "@/components/icons/ProfileCheck.astro";
-import Home from "@/components/icons/Home.astro";
-import ProjectNavbar from "@/components/icons/ProjectNavbar.astro";
+import { navigationItems } from "@/data/profile";
 ---
 
 <header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+  class="fixed top-5 z-20 flex w-full items-center justify-center px-4 md:top-6"
 >
-  <!-- Ícono de hamburguesa, visible solo en pantallas pequeñas -->
   <button
-    class="block md:hidden p-2 ml-auto"
+    class="ml-auto block rounded-full bg-white/80 p-2 text-gray-900 shadow-sm dark:bg-gray-800/90 dark:text-white md:hidden"
     id="hamburgerButton"
     aria-label="Toggle menu"
+    aria-expanded="false"
+    aria-controls="dropdownMenu"
   >
     <svg
-      class="w-6 h-6"
+      class="h-6 w-6"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
       <path
         stroke-linecap="round"
@@ -32,79 +30,38 @@ import ProjectNavbar from "@/components/icons/ProjectNavbar.astro";
 
   <nav
     id="navLinks"
-    class="hidden md:flex px-3 font-medium rounded-full text-gray-900 dark:text-gray-800 justify-center items-center space-x-4"
+    class="hidden items-center justify-center rounded-full bg-white/80 px-4 py-1 font-medium text-gray-900 shadow-sm backdrop-blur dark:bg-gray-800/90 dark:text-white md:flex"
+    aria-label="Primary navigation"
   >
-    <a
-      class="nav-link relative flex items-center justify-center px-5 py-3 transition hover:text-blue-600 dark:hover:text-blue-800"
-      aria-label="Inicio"
-      href="/#inicio"
-    >
-      <Home class="size-6 mr-2" />
-      Inicio
-    </a>
-
-    <a
-      class="nav-link relative flex items-center justify-center px-5 py-3 transition hover:text-blue-600 dark:hover:text-blue-800"
-      aria-label="Experiencia"
-      href="/#experiencia"
-    >
-      <Briefcase class="size-6 mr-2" />
-      Experiencia
-    </a>
-
-    <a
-      class="nav-link relative flex items-center justify-center px-5 py-3 transition hover:text-blue-600 dark:hover:text-blue-800"
-      aria-label="Proyectos"
-      href="/#proyectos"
-    >
-      <ProjectNavbar class="size-6 mr-2" />
-      Proyectos
-    </a>
-
-    <a
-      class="nav-link relative flex items-center justify-center px-5 py-3 transition hover:text-blue-600 dark:hover:text-blue-800"
-      aria-label="Tecnologias"
-      href="/#tecnologias"
-    >
-      <CodeIcon class="size-6 mr-2" />
-      Tecnologías
-    </a>
-
-    <a
-      class="nav-link relative flex items-center justify-center px-5 py-3 transition hover:text-blue-600 dark:hover:text-blue-800"
-      aria-label="Sobre mí"
-      href="/#sobre-mi"
-    >
-      <ProfileCheck class="size-6 mr-2" />
-      Sobre mí
-    </a>
+    {
+      navigationItems.map((item) => (
+        <a
+          class="relative flex items-center justify-center px-5 py-3 text-sm transition hover:text-blue-600 dark:hover:text-blue-300"
+          aria-label={item.label}
+          href={item.href}
+        >
+          {item.label}
+        </a>
+      ))
+    }
   </nav>
 
-  <!-- Menú dropdown para pantallas pequeñas -->
   <nav
-    class="absolute top-0 right-0 mt-12 mr-4 hidden bg-white dark:bg-gray-800 shadow-lg md:hidden rounded-lg transition-transform transform duration-300 p-4 w-3/4 max-w-xs z-20"
+    class="absolute right-4 top-0 z-20 mt-12 hidden w-3/4 max-w-xs rounded-lg bg-white p-4 shadow-lg transition-transform duration-300 dark:bg-gray-800 md:hidden"
     id="dropdownMenu"
+    aria-label="Mobile navigation"
   >
-    <a
-      href="/#inicio"
-      class="block px-5 py-3 text-gray-900 dark:text-gray-300"
-      onclick="window.closeDropdown()">Inicio</a
-    >
-    <a
-      href="/#experiencia"
-      class="block px-5 py-3 text-gray-900 dark:text-gray-300"
-      onclick="window.closeDropdown()">Experiencia</a
-    >
-    <a
-      href="/#proyectos"
-      class="block px-5 py-3 text-gray-900 dark:text-gray-300"
-      onclick="window.closeDropdown()">Proyectos</a
-    >
-    <a
-      href="/#sobre-mi"
-      class="block px-5 py-3 text-gray-900 dark:text-gray-300"
-      onclick="window.closeDropdown()">Sobre mí</a
-    >
+    {
+      navigationItems.map((item) => (
+        <a
+          href={item.href}
+          class="block px-5 py-3 text-gray-900 dark:text-gray-300"
+          data-mobile-nav-link
+        >
+          {item.label}
+        </a>
+      ))
+    }
   </nav>
 </header>
 
@@ -112,57 +69,42 @@ import ProjectNavbar from "@/components/icons/ProjectNavbar.astro";
   document.addEventListener("astro:page-load", () => {
     const hamburgerButton = document.getElementById("hamburgerButton");
     const dropdownMenu = document.getElementById("dropdownMenu");
+    const mobileLinks = document.querySelectorAll("[data-mobile-nav-link]");
 
-    // Define la función `closeDropdown` en el ámbito de la ventana
-    (window as any).closeDropdown = () => {
-      if (dropdownMenu) {
-        dropdownMenu.classList.add("hidden");
-      }
+    const closeDropdown = () => {
+      dropdownMenu?.classList.add("hidden");
+      hamburgerButton?.setAttribute("aria-expanded", "false");
     };
 
     const toggleDropdown = (event: Event) => {
       dropdownMenu?.classList.toggle("hidden");
+      const isOpen = dropdownMenu && !dropdownMenu.classList.contains("hidden");
+      hamburgerButton?.setAttribute("aria-expanded", String(Boolean(isOpen)));
       event.stopPropagation();
     };
 
-    if (hamburgerButton && dropdownMenu) {
-      hamburgerButton.addEventListener("click", toggleDropdown);
+    hamburgerButton?.addEventListener("click", toggleDropdown);
+    mobileLinks.forEach((link) => link.addEventListener("click", closeDropdown));
 
-      // Cierra el menú cuando se hace clic fuera de él
-      document.addEventListener("click", (e: MouseEvent) => {
-        const target = e.target as Node; // Confirma que e.target es de tipo `Node`
-        if (
-          !dropdownMenu.classList.contains("hidden") &&
-          target !== dropdownMenu &&
-          target !== hamburgerButton &&
-          !dropdownMenu.contains(target)
-        ) {
-          (window as any).closeDropdown();
-        }
-      });
-    }
+    document.addEventListener("click", (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (
+        dropdownMenu &&
+        hamburgerButton &&
+        !dropdownMenu.classList.contains("hidden") &&
+        target !== dropdownMenu &&
+        target !== hamburgerButton &&
+        !dropdownMenu.contains(target)
+      ) {
+        closeDropdown();
+      }
+    });
   });
 </script>
-<style>
-  /* Estilos adicionales específicos para el dropdown en pantallas pequeñas */
-  #dropdownMenu {
-    right: 0;
-    animation: fadeIn 0.3s ease;
-  }
-  /* Estilos para el dropdown */
-  @media (max-width: 425px) {
-    #navLinks {
-      display: none;
-    }
-  }
-  nav {
-    animation: nav-shadown 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 100px;
-  }
 
-  nav {
-    @apply dark:bg-gray-800/90 bg-white/50;
+<style>
+  #dropdownMenu {
+    animation: fadeIn 0.3s ease;
   }
 
   @keyframes fadeIn {
