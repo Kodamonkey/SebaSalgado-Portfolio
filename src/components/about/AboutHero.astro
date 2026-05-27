@@ -1,0 +1,29 @@
+---
+import { aboutPage } from "@/data/about";
+import { profile } from "@/data/profile";
+---
+
+<section class="grid gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+  <div>
+    <p class="text-sm font-semibold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-300">
+      {aboutPage.hero.eyebrow}
+    </p>
+    <h1 class="mt-5 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+      {aboutPage.hero.title}
+    </h1>
+    <p class="mt-5 text-xl font-semibold text-cyan-900 dark:text-cyan-100">
+      {aboutPage.hero.subtitle}
+    </p>
+    <p class="mt-7 max-w-2xl text-lg leading-8 text-gray-700 dark:text-gray-300">
+      {aboutPage.hero.body}
+    </p>
+  </div>
+
+  <img
+    src="/profile.jpeg"
+    alt={`Portrait of ${profile.displayName}`}
+    width="320"
+    height="320"
+    class="mx-auto h-56 w-56 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/20 sm:h-72 sm:w-72"
+  />
+</section>

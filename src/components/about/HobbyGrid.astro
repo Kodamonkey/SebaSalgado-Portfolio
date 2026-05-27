@@ -1,0 +1,31 @@
+---
+import { aboutPage } from "@/data/about";
+
+const icons = ["♪", "⚽", "◇", "▣", "△", "∴"];
+---
+
+<section>
+  <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
+    Outside the keyboard
+  </h2>
+  <p class="mt-4 max-w-2xl leading-7 text-gray-700 dark:text-gray-300">
+    Things that keep me curious, grounded and moving.
+  </p>
+  <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      aboutPage.hobbies.map((hobby, index) => (
+        <article class="flex items-start gap-4 rounded-lg border border-black/10 bg-white/75 p-5 shadow-sm dark:border-white/10 dark:bg-gray-900/75">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-lg font-bold text-blue-800 ring-1 ring-blue-100 dark:bg-blue-950/40 dark:text-blue-200 dark:ring-blue-900/60">
+            {icons[index]}
+          </span>
+          <div>
+            <h3 class="font-bold text-gray-900 dark:text-white">{hobby.title}</h3>
+            <p class="mt-1 text-sm leading-6 text-gray-700 dark:text-gray-300">
+              {hobby.note}
+            </p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

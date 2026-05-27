@@ -1,10 +1,14 @@
 ---
 import { profile } from "@/data/profile";
+import LinkButton from "@/components/LinkButton.astro";
 ---
 
 <article class="grid gap-10 text-gray-700 dark:text-gray-300 lg:grid-cols-[1.35fr_0.85fr]">
   <div class="space-y-6 text-lg leading-8">
     {profile.about.map((paragraph) => <p>{paragraph}</p>)}
+    <LinkButton href="/about" aria-label="Read a bit more about Sebastian">
+      A bit more about me
+    </LinkButton>
   </div>
 
   <aside

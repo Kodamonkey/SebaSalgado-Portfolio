@@ -52,12 +52,18 @@ import { profile } from "@/data/profile";
       </div>
     </div>
 
-    <img
-      class="h-44 w-44 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/20 sm:h-56 sm:w-56 md:mt-2"
-      src="/profile.jpeg"
-      alt={`Portrait of ${profile.displayName}`}
-      width="224"
-      height="224"
-    />
+    <a
+      href="/about"
+      aria-label="Read more about Sebastian"
+      class="rounded-full transition hover:-translate-y-1 hover:shadow-xl focus:outline-none focus-visible:ring focus-visible:ring-blue-500"
+    >
+      <img
+        class="h-44 w-44 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/20 sm:h-56 sm:w-56 md:mt-2"
+        src="/profile.jpeg"
+        alt={`Portrait of ${profile.displayName}`}
+        width="224"
+        height="224"
+      />
+    </a>
   </div>
 </div>
